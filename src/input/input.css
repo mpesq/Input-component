@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.lbl {
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+
+  /* Gray 1 */
+
+  color: #333333;
+}
+
+.inp {
+  width: 200px;
+  height: 56px;
+  border: 1px solid #828282;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+}
+
+.inp:hover {
+    border: 1px solid #333333;
+}
