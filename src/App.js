@@ -7,6 +7,17 @@ function App() {
     <div>
       <div className='title'>Input component</div>
       <Input></Input>
+      <Input error></Input>
+      <Input disabled></Input>
+      <div className="row">
+        <Input helperText="Some interesting text"></Input>
+        <Input helperText="Some interesting text" error></Input>
+      </div>
+      <div className="row">
+        <Input startIcon></Input>
+        <Input endIcon></Input>
+      </div>
+      <Input></Input>
     </div>
   );
 }
