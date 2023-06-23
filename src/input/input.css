@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
 }
 
 .lbl {
@@ -100,6 +101,58 @@
   z-index: 9999;
   transform: translate(-120%, 70%);
   color: #828282;
+}
+
+.sm {
+  width: 200px;
+  height: 40px;
+}
+
+.md {
+  width: 200px;
+  height: 56px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.textArea {
+  width: 200px;
+  border: 1px solid #828282;
+  border-radius: 8px;
+  font-family: "Noto Sans JP", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+}
+
+.textArea.hover {
+  border: 1px solid #333333;
+  outline: none;
+}
+
+.textArea.focus {
+  border: 1px solid #2962ff;
+  outline: none;
+}
+
+.textArea.error {
+  border: 1px solid #d32f2f;
+}
+
+.textArea:disabled {
+  border: 1px solid #e0e0e0;
+  background: #f2f2f2;
+}
+
+.titleInput {
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
 }
 
 

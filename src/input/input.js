@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./input.css";
 
-const Input = ({ error, disabled, helperText, startIcon, endIcon }) => {
+const Input = ({ error, disabled, helperText, startIcon, endIcon, size, fullWidth, multiline, rows, title }) => {
   const [inputValue, setInputValue] = useState("");
   const [hover, setHover] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -20,8 +20,22 @@ const Input = ({ error, disabled, helperText, startIcon, endIcon }) => {
     }
     inputClasses += startIcon ? " input-startIcon" : "";
     inputClasses += endIcon ? " input-endIcon" : "";
-
+    inputClasses += size === "sm" ? " sm" : "";
+    inputClasses += size === "md" ? " md" : "";
+    inputClasses += fullWidth ? " fullWidth" : ""; 
     return inputClasses;
+  };
+
+  const getTextAreaClasses = () => {
+    let textAreaClasses = "textArea";
+    textAreaClasses += error ? " error" : "";
+    textAreaClasses += hover ? " hover" : "";
+    textAreaClasses += focus ? " focus" : "";
+    if (error && hover) {
+      textAreaClasses = "textArea hover";
+    }
+    textAreaClasses += fullWidth ? " fullWidth" : ""; 
+    return textAreaClasses;
   };
 
   const getLabelClasses = () => {
@@ -60,15 +74,16 @@ const Input = ({ error, disabled, helperText, startIcon, endIcon }) => {
 
   return (
     <div className="container">
+      <p className="titleInput">{title}</p>
       <label className={getLabelClasses()} htmlFor="inputField">
         Label
       </label>
-      <div className="icon-input-container">
-        {startIcon && renderIcon("call")}
-        <input
-          className={getInputClasses()}
-          type="text"
+      
+        {multiline ?
+        <textarea
           id="inputField"
+          className={getTextAreaClasses()}
+          rows={rows}
           placeholder="Placeholder"
           value={inputValue}
           onChange={handleInputChange}
@@ -79,9 +94,32 @@ const Input = ({ error, disabled, helperText, startIcon, endIcon }) => {
           error={error}
           disabled={disabled}
           helperText={helperText}
+          fullWidth={fullWidth}
+          title={title}
         />
+        :
+        <div className="icon-input-container">
+          {startIcon && renderIcon("call")}
+          <input
+            className={getInputClasses()}
+            type="text"
+            id="inputField"
+            placeholder="Placeholder"
+            value={inputValue}
+            onChange={handleInputChange}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            error={error}
+            disabled={disabled}
+            helperText={helperText}
+            fullWidth={fullWidth}
+            title={title}
+          />
         {endIcon && renderIcon("lock")}
       </div>
+      }
       <label className={getLabelDownClasses()} htmlFor="inputField">
         {helperText}
       </label>
